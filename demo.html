@@ -1,0 +1,61 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Demo for notific.js</title>
+        <script src="notific.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+    </head>
+    <body>
+        <h1>notific.js demo</h1>
+
+        <h2>页面打开时会弹出桌面通知</h2>
+
+        <script>
+            notific.show({text: "成功啦！第一次桌面通知！"});
+        </script>
+
+        <h2>点击按钮弹出桌面通知</h2>
+
+        <div>1.弹出后，可以自定义点击的行为</div>
+        <input type="button" onclick="btnClick1" value="点我"/>
+        <script>
+            function btnClick1(evt){
+                notific.show({
+                    title: "桌面通知",
+                    text: "点击按钮出现桌面通知"
+                }, {
+                    onclick: function(){
+                        window.open('http://www.baidu.com', '_blank');
+                    }
+                });
+            }
+        </script>
+
+        <div>2.设置延时消失的时间</div>
+        <input type="button" onclick="btnClick2" value="点我"/>
+        <script>
+            function btnClick2(evt){
+                notific.show({
+                    title: "桌面通知",
+                    text: "6秒后消失"
+                }, {
+                    timeout: 6000
+                });
+            }
+        </script>
+
+        <div>3.设置是否覆盖之前的通知</div>
+        <input type="button" onclick="btnClick3" value="点我"/>
+        <script>
+            function btnClick3(evt){
+                notific.show({
+                    title: "桌面通知",
+                    text: "这个通知会覆盖上一个通知"
+                }, {
+                    isCover: true
+                });
+            }
+        </script>
+    </body>
+</html>
