@@ -264,28 +264,6 @@
             }
         },
         /**
-         * 获取检查桌面通知是否获得了用户的许可
-         * @return {number}
-         */
-        getPermission: function(){
-            var that = this;
-
-            var status = 1;
-            if (that.isSupported()) {
-                // firefox 直接使用premission对象
-                status = global.Notification.permission;
-            }
-            // “granted”（旧版chrome状态值：0）表示用户同意消息提醒
-            // “default”（旧版chrome状态值：1）表示默认状态，用户既未拒绝，也未同意
-            // “denied”（旧版chrome状态值：2）表示用户拒绝消息提醒
-            if (status === 0 || status === "granted") {
-                status = 0;
-            } else if (status === 2 || status === "denied") {
-                status = 2;
-            }
-            return status;
-        },
-        /**
          * HTML5的Web Notifications 是否在该浏览器可用
          * @return {Boolean}
          */
